@@ -1,0 +1,11 @@
+bin
+config
+db
+lib
+log
+node_modules
+public
+storage
+test
+tmp
+vendor

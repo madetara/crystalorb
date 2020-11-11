@@ -5,11 +5,11 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
-    - "db/**/*"
-    - "script/**/*"
-    - "bin/**/*"
-    - "node_modules/**/*"
-    - "config/**/*"
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'config/**/*'
 
 Metrics/LineLength:
   Max: 100

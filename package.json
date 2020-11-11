@@ -16,14 +16,28 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-svelte3": "^2.7.3",
     "husky": "^4.3.0",
+    "prettier": "2.1.2",
+    "prettier-plugin-svelte": "^1.4.1",
     "webpack-dev-server": "^3.11.0"
   },
   "husky": {
     "hooks": {
+      "pre-commit": "bundle exec rubocop -a && yarn lint",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
+  },
+  "scripts": {
+    "lint": "prettier --write . && eslint --fix --ext .js,.ts, ."
   },
   "config": {
     "commitizen": {
