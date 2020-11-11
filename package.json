@@ -37,7 +37,8 @@
     }
   },
   "scripts": {
-    "lint": "prettier --write . && eslint --fix --ext .js,.ts, ."
+    "lint": "prettier --write . && eslint --fix --ext .js,.ts, .",
+    "slint": "prettier --check . && eslint --ext .js,.ts ."
   },
   "config": {
     "commitizen": {
