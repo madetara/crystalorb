@@ -1,0 +1,36 @@
+#%RAML 1.0
+---
+title: crystalorb
+baseUri: https://crystalorb.madetara.dev/api/{version}
+version: v1
+types:
+    Error:
+        type: object
+        properties:
+            code:
+                required: true
+                type: string
+            message:
+                required: true
+                type: string
+    User:
+        type: object
+        properties:
+            email:
+                required: true
+                type: string
+            password:
+                required: true
+                type: string
+/users:
+    post:
+        description: |
+            Creates new user
+        body:
+            application/json:
+                type: User
+                example: |
+                    {
+                        "email": "johndoe@example.com",
+                        "password": "Qwerty123!"
+                    }
