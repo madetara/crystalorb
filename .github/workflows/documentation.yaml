@@ -1,0 +1,30 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**/*'
+      - '.github/workflows/documentation.yaml'
+
+jobs:
+  push_docs:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: Install HTML generator
+        run: npm i -g raml2html@7.6.0
+      - name: Generate docs
+        run: |
+          mkdir docs/build
+          raml2html -i docs/api/v1.raml -o docs/build/index.html
+      - uses: s0/git-publish-subdir-action@v2.4.0
+        env:
+          REPO: self
+          BRANCH: docs
+          FOLDER: docs/build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
