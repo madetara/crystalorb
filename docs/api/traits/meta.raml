@@ -1,0 +1,17 @@
+#%RAML 1.0
+---
+title: crystalorb meta traits
+uses:
+    t: ../types.raml
+traits:
+    IdempotencyCheck:
+        headers:
+            RequestId:
+                type: string
+                description: Randomly generated string which ensures that concrete request will only be applied once
+        responses:
+            409:
+                description: Request have failed idempotency check
+                body:
+                    application/json:
+                        type: t.Error

@@ -6,6 +6,7 @@ version: v1
 uses:
     t: types.raml
     e: traits/errors.raml
+    m: traits/meta.raml
 
 /users:
     post:
@@ -35,7 +36,8 @@ uses:
             Creates new map
         is: [
             e.Unprocessable: {description: "Failed to create map with given properties"},
-            e.Fatal
+            e.Fatal,
+            m.IdempotencyCheck
         ]
         body:
             application/json:
@@ -66,10 +68,10 @@ uses:
                         application/json:
                             type: t.GetMapResponse
         /labels:
-            put:
+            post:
                 description: |
                     Adds label to the map
-                is: [e.NotFound, e.Fatal]
+                is: [e.NotFound, e.Fatal, m.IdempotencyCheck]
                 body:
                     application/json:
                         type: t.PutLabelRequest
@@ -86,7 +88,7 @@ uses:
 /files:
     post:
         description: |
-            Upload new file
+            Uploads new file
         body:
             application/octet-stream:
         is: [e.Fatal]
