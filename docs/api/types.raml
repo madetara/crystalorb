@@ -1,0 +1,33 @@
+#%RAML 1.0
+---
+title: crystalorb types
+types:
+    Error:
+        type: object
+        properties:
+            code:
+                required: true
+                type: string
+            message:
+                required: true
+                type: string
+    User:
+        type: object
+        properties:
+            email:
+                required: true
+                type: string
+            password:
+                required: true
+                type: string
+    UserCreated:
+        type: object
+        properties:
+            userId:
+                required: true
+                type: string
+    ImageCreationResponse:
+        type: object
+        properties:
+            imageId:
+                type: integer

@@ -1,0 +1,27 @@
+#%RAML 1.0
+---
+title: crystalorb types
+uses:
+    t: ../types.raml
+traits:
+    NotFound:
+        responses:
+            404:
+                description: We couldn't find requested resource
+                body:
+                    application/json:
+                        type: t.Error
+    Conflict:
+        responses:
+            409:
+                description: <<description>>
+                body:
+                    application/json:
+                        type: t.Error
+    Fatal:
+        responses:
+            500:
+                description: Something bad happened
+                body:
+                    application/json:
+                        type: t.Error

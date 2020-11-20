@@ -3,34 +3,56 @@
 title: crystalorb
 baseUri: https://crystalorb.madetara.dev/api/{version}
 version: v1
-types:
-    Error:
-        type: object
-        properties:
-            code:
-                required: true
-                type: string
-            message:
-                required: true
-                type: string
-    User:
-        type: object
-        properties:
-            email:
-                required: true
-                type: string
-            password:
-                required: true
-                type: string
+uses:
+    t: types.raml
+    e: traits/errors.raml
+
 /users:
     post:
         description: |
             Creates new user
+        is: [
+            e.Conflict: {description: "User with specified email already exists"},
+            e.Fatal
+        ]
         body:
             application/json:
-                type: User
+                type: t.User
                 example: |
                     {
                         "email": "johndoe@example.com",
                         "password": "Qwerty123!"
                     }
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: t.UserCreated
+
+/images:
+    post:
+        description: |
+            Adds new image
+        body:
+            application/octet-stream:
+        is: [e.Fatal]
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: t.ImageCreationResponse
+    /{imageId}:
+        get:
+            description: |
+                Gets image
+            is: [e.NotFound, e.Fatal]
+            responses:
+                200:
+                    body:
+                        application/octet-stream:
+        put:
+            description: |
+                Updates image
+            is: [e.NotFound, e.Fatal]
+            responses:
+                204:
