@@ -18,6 +18,13 @@ traits:
                 body:
                     application/json:
                         type: t.Error
+    Unprocessable:
+        responses:
+            422:
+                description: <<description>>
+                body:
+                    application/json:
+                        type: t.Error
     Fatal:
         responses:
             500:

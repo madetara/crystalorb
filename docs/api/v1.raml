@@ -29,6 +29,50 @@ uses:
                     application/json:
                         type: t.UserCreated
 
+/maps:
+    post:
+        description: |
+            Creates new map
+        is: [
+            e.Unprocessable: {description: "Failed to create map with given properties"},
+            e.Fatal
+        ]
+        body:
+            application/json:
+                type: t.MapCreationRequest
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: t.MapCreatedResponse
+    /{id}:
+        get:
+            description: |
+                Gets map info
+            is: [e.NotFound, e.Fatal]
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: t.GetMapResponse
+        /labels:
+            put:
+                description: |
+                    Adds label to the map
+                is: [e.NotFound, e.Fatal]
+                body:
+                    application/json:
+                        type: t.PutLabelRequest
+                responses:
+                    204:
+            /{id}:
+                delete:
+                    description: |
+                        Deletes label from the map
+                    is: [e.NotFound, e.Fatal]
+                    responses:
+                        204:
+
 /files:
     post:
         description: |

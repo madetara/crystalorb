@@ -25,7 +25,44 @@ types:
         properties:
             userId:
                 required: true
+                type: integer
+    MapCreationRequest:
+        type: object
+        properties:
+            imageId:
+                required: true
+                type: integer
+    MapCreatedResponse:
+        type: object
+        properties:
+            mapId:
+                required: true
+                type: integer
+    GetMapResponse:
+        type: object
+        properties:
+            imageId:
+                required: true
+                type: integer
+            labelIds:
+                required: false
+                type: array
+    PutLabelRequest:
+        type: object
+        properties:
+            message:
+                required: true
                 type: string
+            position:
+                required: true
+                type: object
+                properties:
+                    x:
+                        required: true
+                        type: integer
+                    y:
+                        required: true
+                        type: integer
     FileUploadResponse:
         type: object
         properties:
