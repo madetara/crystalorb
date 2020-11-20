@@ -1,0 +1,32 @@
+
+#%RAML 1.0
+---
+title: crystalorb primitive types
+types:
+    Error:
+        type: object
+        properties:
+            code:
+                required: true
+                type: string
+            message:
+                required: true
+                type: string
+    User:
+        type: object
+        properties:
+            email:
+                required: true
+                type: string
+            password:
+                required: true
+                type: string
+    Position:
+        type: object
+        properties:
+            x:
+                required: true
+                type: integer
+            y:
+                required: true
+                type: integer

@@ -4,7 +4,8 @@ title: crystalorb
 baseUri: https://crystalorb.madetara.dev/api/{version}
 version: v1
 uses:
-    t: types.raml
+    p: types/primitives.raml
+    d: types/dtos.raml
     e: traits/errors.raml
     m: traits/meta.raml
 
@@ -18,7 +19,7 @@ uses:
         ]
         body:
             application/json:
-                type: t.User
+                type: p.User
                 example: |
                     {
                         "email": "johndoe@example.com",
@@ -28,7 +29,7 @@ uses:
             201:
                 body:
                     application/json:
-                        type: t.UserCreated
+                        type: d.UserCreated
 
 /maps:
     post:
@@ -41,12 +42,12 @@ uses:
         ]
         body:
             application/json:
-                type: t.MapCreationRequest
+                type: d.MapCreationRequest
         responses:
             201:
                 body:
                     application/json:
-                        type: t.MapCreatedResponse
+                        type: d.MapCreatedResponse
     /my:
         get:
             description: |
@@ -56,7 +57,7 @@ uses:
                 200:
                     body:
                         application/json:
-                            type: t.GetMyMapsResponse
+                            type: d.GetMyMapsResponse
     /{id}:
         get:
             description: |
@@ -66,7 +67,7 @@ uses:
                 200:
                     body:
                         application/json:
-                            type: t.GetMapResponse
+                            type: d.GetMapResponse
         /labels:
             post:
                 description: |
@@ -74,7 +75,7 @@ uses:
                 is: [e.NotFound, e.Fatal, m.IdempotencyCheck]
                 body:
                     application/json:
-                        type: t.PutLabelRequest
+                        type: d.PutLabelRequest
                 responses:
                     204:
             /{id}:
@@ -96,7 +97,7 @@ uses:
             201:
                 body:
                     application/json:
-                        type: t.FileUploadResponse
+                        type: d.FileUploadResponse
     /{id}:
         get:
             description: |

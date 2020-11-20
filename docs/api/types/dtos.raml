@@ -1,25 +1,9 @@
 #%RAML 1.0
 ---
 title: crystalorb types
+uses:
+    p: ./primitives.raml
 types:
-    Error:
-        type: object
-        properties:
-            code:
-                required: true
-                type: string
-            message:
-                required: true
-                type: string
-    User:
-        type: object
-        properties:
-            email:
-                required: true
-                type: string
-            password:
-                required: true
-                type: string
     UserCreated:
         type: object
         properties:
@@ -44,15 +28,25 @@ types:
             imageId:
                 required: true
                 type: integer
-            labelIds:
+            labels:
                 required: false
                 type: array
+                items:
+                    type: object
+                    properties:
+                        labelId:
+                            required: true
+                            type: integer
+                        position:
+                            required: true
+                            type: p.Position
     GetMyMapsResponse:
         type: object
         properties:
             mapIds:
                 required: true
                 type: array
+                items: integer
     PutLabelRequest:
         type: object
         properties:
@@ -61,14 +55,7 @@ types:
                 type: string
             position:
                 required: true
-                type: object
-                properties:
-                    x:
-                        required: true
-                        type: integer
-                    y:
-                        required: true
-                        type: integer
+                type: p.Position
     FileUploadResponse:
         type: object
         properties:

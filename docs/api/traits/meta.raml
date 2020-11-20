@@ -2,7 +2,7 @@
 ---
 title: crystalorb meta traits
 uses:
-    t: ../types.raml
+    p: ../types/primitives.raml
 traits:
     IdempotencyCheck:
         headers:
@@ -14,4 +14,4 @@ traits:
                 description: Request have failed idempotency check
                 body:
                     application/json:
-                        type: t.Error
+                        type: p.Error
