@@ -29,10 +29,10 @@ uses:
                     application/json:
                         type: t.UserCreated
 
-/images:
+/files:
     post:
         description: |
-            Adds new image
+            Upload new file
         body:
             application/octet-stream:
         is: [e.Fatal]
@@ -40,11 +40,11 @@ uses:
             201:
                 body:
                     application/json:
-                        type: t.ImageCreationResponse
-    /{imageId}:
+                        type: t.FileUploadResponse
+    /{id}:
         get:
             description: |
-                Gets image
+                Gets file
             is: [e.NotFound, e.Fatal]
             responses:
                 200:
@@ -52,7 +52,7 @@ uses:
                         application/octet-stream:
         put:
             description: |
-                Updates image
+                Updates file
             is: [e.NotFound, e.Fatal]
             responses:
                 204:
