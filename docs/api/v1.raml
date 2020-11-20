@@ -45,6 +45,16 @@ uses:
                 body:
                     application/json:
                         type: t.MapCreatedResponse
+    /my:
+        get:
+            description: |
+                Gets maps owned by authenticated user
+            is: [e.Fatal]
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: t.GetMyMapsResponse
     /{id}:
         get:
             description: |
