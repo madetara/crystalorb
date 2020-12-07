@@ -1,0 +1,9 @@
+node_modules
+.dockerignore
+Dockerfile
+.editorconfig
+.eslint*
+.git*
+.prettier*
+.rubocop*
+README.md
