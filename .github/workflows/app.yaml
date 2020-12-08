@@ -53,6 +53,7 @@ jobs:
       DB_HOST: ${{ secrets.DB_HOST }}
       DB_PORT: ${{ secrets.DB_PORT }}
       HOSTNAME: ${{ secrets.HOSTNAME }}
+      DEVISE_SECRET_KEY: ${{ secrets.DEVISE_SECRET_KEY }}
     steps:
       - name: Deploy image
         uses: appleboy/ssh-action@master
@@ -60,7 +61,7 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.PRIVATE_KEY }}
           username: root
-          envs: HOSTNAME, DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT, CR_PAT, GITHUB_RUN_NUMBER
+          envs: DEVISE_SECRET_KEY, HOSTNAME, DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT, CR_PAT, GITHUB_RUN_NUMBER
           script: |
             echo $CR_PAT | docker login ghcr.io -u madetara --password-stdin
             docker stop crystalorb
@@ -72,5 +73,6 @@ jobs:
               -e DB_HOST="$DB_HOST" \
               -e DB_PORT="$DB_PORT" \
               -e HOSTNAME="$HOSTNAME" \
+              -e DEVISE_SECRET_KEY="$DEVISE_SECRET_KEY" \
               --link "crystalorb-pg:$DB_HOST" \
               "ghcr.io/madetara/crystalorb/app:1.0.$GITHUB_RUN_NUMBER"
