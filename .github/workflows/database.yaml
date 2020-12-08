@@ -27,6 +27,7 @@ jobs:
             docker stop crystalorb-pg
             docker rm crystalorb-pg
             docker run \
+              -d \
               -v /workload/crystalorb/db:/var/lib/postgresql/data \
               --restart unless-stopped \
               --name crystalorb-pg \
