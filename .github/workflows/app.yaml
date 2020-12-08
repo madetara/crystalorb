@@ -65,7 +65,7 @@ jobs:
             echo $CR_PAT | docker login ghcr.io -u madetara --password-stdin
             docker stop crystalorb
             docker rm crystalorb
-            docker run -d --name crystalorb --restart unless-stopped -p 3000:3030 \
+            docker run -d --name crystalorb --restart unless-stopped -p 3030:3000 \
               -e DB_PASSWORD="$DB_PASSWORD" \
               -e DB_NAME="$DB_NAME" \
               -e DB_USER="$DB_USER" \
