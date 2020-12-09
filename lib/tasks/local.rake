@@ -8,7 +8,11 @@ namespace :local do
       --env POSTGRES_USER=crystalorb --env POSTGRES_DB=crystalorb_dev postgres:13.1-alpine)
   end
 
-  task server: ['environment', 'db:migrate'] do
+  task mail: ['environment'] do
+    sh %(mailcatcher)
+  end
+
+  task server: ['environment', 'db:migrate', 'mail'] do
     sh %(bundle exec rails s)
   end
 
