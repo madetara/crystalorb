@@ -2,10 +2,14 @@
 
 desc 'Starts up local postgres in docker'
 
-namespace :local_db do
-  task start: :environment do
+namespace :local do
+  task db: :environment do
     sh %(docker run --name crystalorb-pg -d --rm -p 5432:5432 --env POSTGRES_PASSWORD=crystalorb \
       --env POSTGRES_USER=crystalorb --env POSTGRES_DB=crystalorb_dev postgres:13.1-alpine)
+  end
+
+  task server: ['environment', 'db:migrate'] do
+    sh %(bundle exec rails s)
   end
 
   task stop: :environment do
