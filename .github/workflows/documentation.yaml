@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'docs/**/*'
+      - 'api/docs/**/*'
       - '.github/workflows/documentation.yaml'
 
 jobs:

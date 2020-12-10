@@ -23,8 +23,10 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: yarn install
-      - run: yarn slint
+      - working-directory: client
+        run: yarn install
+      - working-directory: client
+        run: yarn slint
 
   rubocop:
     runs-on: ubuntu-20.04
@@ -40,7 +42,9 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - run: |
+      - working-directory: api
+        run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-      - run: bundle exec rubocop
+      - working-directory: api
+        run: bundle exec rubocop

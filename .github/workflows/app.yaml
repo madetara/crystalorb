@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - 'main'
-    paths-ignore:
-      - 'docs/*'
-      - '.github/*'
+    paths:
+      - 'api/*'
   workflow_dispatch:
 
 jobs:
@@ -38,6 +37,8 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
+          file: api/Dockerfile
+          context: api/
           tags: ghcr.io/madetara/crystalorb/app:1.0.${{ github.run_number }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
