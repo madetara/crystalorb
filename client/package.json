@@ -9,13 +9,18 @@
     "validate": "svelte-check"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@smui/button": "^1.0.0",
+    "@smui/top-app-bar": "^1.0.0",
     "@tsconfig/svelte": "^1.0.0",
     "eslint": "^7.15.0",
     "eslint-plugin-svelte3": "^2.7.3",
+    "node-sass": "^5.0.0",
     "postcss": "^8.2.1",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^1.4.2",

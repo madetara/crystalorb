@@ -7,6 +7,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import postcss from 'rollup-plugin-postcss';
+import babel from '@rollup/plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -55,6 +56,11 @@ export default {
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: 'bundle.css' }),
+
+    babel({
+      extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
+      include: ['src/**', 'node_modules/svelte/**'],
+    }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
