@@ -19,6 +19,7 @@ jobs:
       - name: Install HTML generator
         run: npm i -g raml2html@7.6.0
       - name: Generate docs
+        working-directory: api/
         run: |
           mkdir docs/build
           raml2html -i docs/api/v1.raml -o docs/build/index.html
@@ -26,5 +27,5 @@ jobs:
         env:
           REPO: self
           BRANCH: docs
-          FOLDER: docs/build
+          FOLDER: api/docs/build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
