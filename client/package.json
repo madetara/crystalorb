@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^1.0.0",
+    "svelte-spa-router": "^3.1.0"
   }
 }

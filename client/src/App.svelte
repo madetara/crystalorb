@@ -1,15 +1,23 @@
 <script lang="ts">
   import 'normalize.css/normalize.css';
-  import TopAppBar from '@smui/top-app-bar';
+  import TopAppBar, { Row, Section } from '@smui/top-app-bar';
   import IconButton from '@smui/icon-button';
-  import Drawer, { AppContent, Content, Scrim } from '@smui/drawer';
+  import Drawer, { AppContent, Content, Scrim, Header } from '@smui/drawer';
   import List, { Item, Text } from '@smui/list';
+  import Router, { push } from 'svelte-spa-router';
 
-  const prominent = true;
+  import { Routes as routes } from './routes';
+  import { isDrawerOpen, closeDrawer, openDrawer } from './state/drawer';
+  import HomeButton from './components/HomeButton.svelte';
+
+  const prominent = false;
   const dense = false;
   const collapsed = true;
 
-  let openDrawer = false;
+  let drawerOpen: boolean;
+  isDrawerOpen.subscribe((v) => {
+    drawerOpen = v;
+  });
 </script>
 
 <style>
@@ -18,25 +26,42 @@
     display: flex;
     overflow: hidden;
     z-index: 0;
-    height: 350px;
+    height: 150px;
     max-width: 600px;
+  }
+
+  .drawer-buttons-container {
+    display: flex;
+    justify-content: space-between;
   }
 </style>
 
 <div class="drawer-container">
-  <Drawer variant="modal" bind:open={openDrawer}>
+  <Drawer variant="modal" bind:open={drawerOpen}>
     <Content>
-      <IconButton
-        class="material-icons"
-        on:click={() => (openDrawer = !openDrawer)}>
-        menu
-      </IconButton>
+      <div class="drawer-buttons-container">
+        <IconButton class="material-icons" on:click={closeDrawer}>
+          menu
+        </IconButton>
+        <HomeButton />
+      </div>
+      <Header>
+        <IconButton
+          class="material-icons"
+          on:click={() => {
+            closeDrawer();
+            push('/signin');
+          }}>
+          login
+        </IconButton>
+      </Header>
       <List>
-        <Item>
-          <Text>first item</Text>
-        </Item>
-        <Item>
-          <Text>Second item</Text>
+        <Item
+          on:click={() => {
+            closeDrawer();
+            push('/map/new');
+          }}>
+          <Text>Create new map</Text>
         </Item>
       </List>
     </Content>
@@ -48,16 +73,25 @@
     <main class="main-content">
       <div class="top-app-bar-container">
         <TopAppBar variant="short" {prominent} {dense} {collapsed}>
-          <div class="menu-button-container">
-            <IconButton
-              margin="center"
-              class="material-icons"
-              on:click={() => (openDrawer = !openDrawer)}>
-              menu
-            </IconButton>
-          </div>
+          <Row>
+            <div class="menu-button-container">
+              <Section>
+                <IconButton
+                  margin="center"
+                  class="material-icons"
+                  on:click={openDrawer}>
+                  menu
+                </IconButton>
+              </Section>
+            </div>
+            <Section align="end" toolbar>
+              <HomeButton />
+            </Section>
+          </Row>
         </TopAppBar>
       </div>
+
+      <Router {routes} />
     </main>
   </AppContent>
 </div>
