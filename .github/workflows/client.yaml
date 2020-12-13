@@ -63,5 +63,5 @@ jobs:
             echo $CR_PAT | docker login ghcr.io -u madetara --password-stdin
             docker stop crystalorb-client
             docker rm crystalorb-client
-            docker run -d --name crystalorb-client --restart unless-stopped -p 3060:5000 \
+            docker run -d --name crystalorb-client --restart unless-stopped -p 3060:80 \
               "ghcr.io/madetara/crystalorb/client:1.0.$GITHUB_RUN_NUMBER"
