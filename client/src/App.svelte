@@ -31,6 +31,9 @@
   }
 
   .drawer-buttons-container {
+    margin-top: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
     display: flex;
     justify-content: space-between;
   }
@@ -67,7 +70,10 @@
     </Content>
   </Drawer>
 
-  <Scrim />
+  <Scrim
+    on:click={() => {
+      closeDrawer();
+    }} />
 
   <AppContent class="app-content">
     <main class="main-content">
