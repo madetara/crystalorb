@@ -3,9 +3,9 @@ import { writable } from 'svelte/store';
 export const isDrawerOpen = writable(false);
 
 export function openDrawer() {
-  isDrawerOpen.update((_) => true);
+  isDrawerOpen.update(() => true);
 }
 
 export function closeDrawer() {
-  isDrawerOpen.update((_) => false);
+  isDrawerOpen.update(() => false);
 }
