@@ -53,13 +53,15 @@ export default {
         dev: !production,
       },
     }),
+
     // we'll extract any component CSS out into
     // a separate file - better for performance
-    css({ output: 'bundle.css' }),
+    // css({ output: 'bundle.css' }),
 
     babel({
       extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
       include: ['src/**', 'node_modules/svelte/**'],
+      babelHelpers: 'bundled',
     }),
 
     // If you have external dependencies installed from

@@ -1,34 +1,63 @@
 <script lang="ts">
-  export let name: string;
+  import 'normalize.css/normalize.css';
+  import TopAppBar from '@smui/top-app-bar';
+  import IconButton from '@smui/icon-button';
+  import Drawer, { AppContent, Content, Scrim } from '@smui/drawer';
+  import List, { Item, Text } from '@smui/list';
+
+  const prominent = true;
+  const dense = false;
+  const collapsed = true;
+
+  let openDrawer = false;
 </script>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: aqua;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .drawer-container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    z-index: 0;
+    height: 350px;
+    max-width: 600px;
   }
 </style>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
-</main>
+<div class="drawer-container">
+  <Drawer variant="modal" bind:open={openDrawer}>
+    <Content>
+      <IconButton
+        class="material-icons"
+        on:click={() => (openDrawer = !openDrawer)}>
+        menu
+      </IconButton>
+      <List>
+        <Item>
+          <Text>first item</Text>
+        </Item>
+        <Item>
+          <Text>Second item</Text>
+        </Item>
+      </List>
+    </Content>
+  </Drawer>
+
+  <Scrim />
+
+  <AppContent class="app-content">
+    <main class="main-content">
+      <div class="top-app-bar-container">
+        <TopAppBar variant="short" {prominent} {dense} {collapsed}>
+          <div class="menu-button-container">
+            <IconButton
+              margin="center"
+              class="material-icons"
+              on:click={() => (openDrawer = !openDrawer)}>
+              menu
+            </IconButton>
+          </div>
+        </TopAppBar>
+      </div>
+    </main>
+  </AppContent>
+</div>
