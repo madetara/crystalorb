@@ -1,4 +1,4 @@
-FROM node:15.4-alpine
+FROM node:15.4-alpine as build
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ RUN yarn install
 
 COPY . .
 
-ENV HOST=0.0.0.0
+RUN yarn build
 
-CMD [ "yarn", "start" ]
+FROM nginx:1.19-alpine as deploy
+
+COPY --from=build /app/public /usr/share/nginx/html
