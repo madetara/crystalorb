@@ -1,5 +1,4 @@
-<script lang="ts">
-  import Mapgen from '../vendor/mapgen/Mapgen.svelte';
+<script>
 </script>
 
 <style>
@@ -13,6 +12,4 @@
   }
 </style>
 
-<div class="mapgen-container">
-  <Mapgen />
-</div>
+<object title="Map generator" class="mapgen-container" type="text/html" data="/embed.html"></object>

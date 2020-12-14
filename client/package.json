@@ -7,9 +7,18 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "slint": "yarn prettier --check src/ && yarn eslint --ext .js,.ts --ignore-pattern *.d.ts src/ && yarn svelte-check"
+    "slint": "yarn prettier --check src/ && yarn lint && yarn svelte-check",
+    "lint": "yarn eslint --ext .js,.ts --ignore-pattern *.d.ts --ignore-pattern vendor/**/* src/"
   },
   "devDependencies": {
+    "@redblobgames/dual-mesh": "https://github.com/redblobgames/dual-mesh",
+    "@redblobgames/prng": "https://github.com/redblobgames/prng",
+    "flatqueue": "^1",
+    "gl-matrix": "^3",
+    "hash-int": "^1",
+    "regl": "^1",
+    "simplex-noise": "^2",
+    "webworkify": "^1",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@rollup/plugin-babel": "^5.2.2",
@@ -44,6 +53,9 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "sirv-cli": "^1.0.0",
-    "svelte-spa-router": "^3.1.0"
+    "svelte-spa-router": "^3.1.0",
+    "@types/browserify": "*",
+    "poisson-disk-sampling": "^1",
+    "uglifyify": "*"
   }
 }
