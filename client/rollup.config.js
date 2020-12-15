@@ -35,13 +35,15 @@ function serve() {
   };
 }
 
+const uuid = require("uuid");
+
 export default {
   input: 'src/main.ts',
   output: {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/build/bundle.js',
+    file: `public/build/bundle.${uuid.v4()}.js`,
   },
   plugins: [
     svelte({
