@@ -3,3 +3,5 @@ declare module '@smui/icon-button';
 declare module '@smui/drawer';
 declare module '@smui/list';
 declare module '@smui/icon-button';
+declare module '@smui/button';
+declare module '@smui/dialog';

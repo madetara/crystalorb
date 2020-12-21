@@ -857,6 +857,24 @@
     "@material/theme" "^3.1.0"
     "@material/typography" "^3.1.0"
 
+"@material/dialog@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@material/dialog/-/dialog-3.2.0.tgz#a206402b9fbf7eea6156f71d34bcac400fa39488"
+  integrity sha512-qcxPxIxEYlDWvWAIaYbgRXluctzIvuCMZISuIUomXnd8t7nc4xVLuNHRubXGCtnIHyoE3Vb7IQEqAGM2ZjWxuw==
+  dependencies:
+    "@material/animation" "^3.1.0"
+    "@material/base" "^3.1.0"
+    "@material/dom" "^3.1.0"
+    "@material/elevation" "^3.1.0"
+    "@material/feature-targeting" "^3.1.0"
+    "@material/ripple" "^3.2.0"
+    "@material/rtl" "^3.2.0"
+    "@material/shape" "^3.1.0"
+    "@material/theme" "^3.1.0"
+    "@material/typography" "^3.1.0"
+    focus-trap "^5.0.0"
+    tslib "^1.9.3"
+
 "@material/dom@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@material/dom/-/dom-3.1.0.tgz#1e58cad0cd5e1d9d6f6cb07422e327ad34a9d405"
@@ -1068,6 +1086,14 @@
   integrity sha512-bNBor5yjUjMxoZWUeSOO16hmKoRTTVh77lUeT+6dnLkHXuuknYWFyOoHhL00t+HZEpzmG1OdVL5WK8/s6VoHjA==
   dependencies:
     svelte "^3.0"
+
+"@smui/dialog@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/dialog/-/dialog-1.0.0.tgz#6f958b57fbb7e2d3a9afa96071ae263254ec41b1"
+  integrity sha512-oUebv1RhnoGf3q6r5U5YQQkFPloG4PG3NpdeLBfGIj5Fqc3tChAZF93CaIgcstsn3l0hahabBmEV0Qg2pes4WQ==
+  dependencies:
+    "@material/dialog" "^3.2.0"
+    "@smui/common" "^1.0.0"
 
 "@smui/drawer@^1.0.0":
   version "1.0.0"

@@ -9,6 +9,7 @@
   import { Routes as routes } from './routes';
   import { isDrawerOpen, closeDrawer, openDrawer } from './state/drawer';
   import HomeButton from './components/HomeButton.svelte';
+  import Authentication from './components/Authentication.svelte';
 
   const prominent = false;
   const dense = false;
