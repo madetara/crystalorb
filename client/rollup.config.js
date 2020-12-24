@@ -7,6 +7,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import babel from '@rollup/plugin-babel';
+const html = require('@rollup/plugin-html');
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -54,7 +55,7 @@ export default {
         dev: !production,
       },
     }),
-
+    html(),
     babel({
       extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
       include: ['src/**', 'node_modules/svelte/**'],
