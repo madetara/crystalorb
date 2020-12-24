@@ -7,6 +7,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import babel from '@rollup/plugin-babel';
+const html = require('@rollup/plugin-html');
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -35,13 +36,15 @@ function serve() {
   };
 }
 
+const uuid = require("uuid");
+
 export default {
   input: 'src/main.ts',
   output: {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/build/bundle.js',
+    file: `public/build/bundle.${uuid.v4()}.js`,
   },
   plugins: [
     svelte({
@@ -52,7 +55,7 @@ export default {
         dev: !production,
       },
     }),
-
+    html(),
     babel({
       extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
       include: ['src/**', 'node_modules/svelte/**'],
