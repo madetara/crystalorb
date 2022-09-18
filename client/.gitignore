@@ -1,5 +1,6 @@
 /node_modules/
 /public/build/
+/.yarn/
 
 .DS_Store
 .vscode
